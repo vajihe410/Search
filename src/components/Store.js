@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getProducts } from '../services/api';
 //components
 import Product from './Product';
+import Loader from './Loader';
 
 const Store = () => {
 
@@ -19,21 +20,30 @@ const Store = () => {
     const changeHandler =(event)=>{
         setSearchedProduct(event.target.value)
     }
+    const resultSearch= products.filter((product)=>product.title.toUpperCase().includes(searchedProduct.toUpperCase()))
+
     return (
         <div>
-            <input type='text' placeholder='Search...' value={searchedProduct} onChange={changeHandler} />
-            <table >
-                <tr>
-                    <th>Product</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                </tr>
-                {
-                products.map((product)=><Product key={product.id} productData={product} />)
-                }
-            </table>
+            {
+                products.length >0 ?
+                 <div>
+                       <input type='text' placeholder='Search...' value={searchedProduct} onChange={changeHandler} />
+                    <table >
+                        <tr>
+                            <th>Product</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                        </tr>
+                        {
+                        resultSearch.map((product)=><Product key={product.id} productData={product} />)
+                        }
+                    </table>
+                </div>  
+                   : <Loader />
 
+            }
+    
         </div>
     );
 };
