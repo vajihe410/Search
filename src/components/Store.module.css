@@ -1,0 +1,30 @@
+.productList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inputSearch{
+    width: 300px;
+    height: 25px;
+    font-size: 16px;
+    margin: 30px 0;
+    border-radius: 4px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    padding: 8px 4px;
+}
+.inputSearch ::placeholder{
+    margin-left: 2px;
+}
+.productList table{
+    margin-left: 50px;
+    border: 1px solid gray;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 8px;
+}
+.productList thead{
+    border-collapse: collapse;
+   
+}
